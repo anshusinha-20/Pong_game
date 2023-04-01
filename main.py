@@ -1,8 +1,18 @@
 """imported Screen class form the turtle module"""
 from turtle import Screen
 
+"""imported time module"""
+import time
+
 """imported Paddle class from the paddle module"""
 from paddle import Paddle
+
+"""imported Ball class from the ball module"""
+from ball import Ball
+
+"""paddle positions"""
+RIGHT_POS = (350, 0)
+LEFT_POS = (-350, 0)
 
 """created screen object"""
 screen = Screen()
@@ -13,12 +23,13 @@ screen.tracer(0)
 screen.listen()
 
 """created paddleRight object"""
-paddleRight = Paddle()
-paddleRight.goto(350, 0)
+paddleRight = Paddle(RIGHT_POS)
 
 """created paddleLeft object"""
-paddleLeft = Paddle()
-paddleLeft.goto(-350, 0)
+paddleLeft = Paddle(LEFT_POS)
+
+"""created ball object"""
+ball = Ball()
 
 """paddleRight moves on pressing the up and down arrow keys"""
 screen.onkey(paddleRight.up, "Up")
@@ -33,7 +44,12 @@ isGameOn = True
 
 """until the game is on the loop runs"""
 while isGameOn:
+    """screen's animation and delay"""
     screen.update()
+    time.sleep(0.1)
+
+    """ball's movement"""
+    ball.move()
 
 """screen will exit on click"""
 screen.exitonclick()
