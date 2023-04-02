@@ -46,10 +46,14 @@ isGameOn = True
 while isGameOn:
     """screen's animation and delay"""
     screen.update()
-    time.sleep(0.1)
+    time.sleep(0.08)
 
     """ball's movement"""
     ball.move()
+
+    """detecting collision with the walls"""
+    if ball.ycor() > 280 or ball.ycor() < -280:
+        ball.bounce()
 
 """screen will exit on click"""
 screen.exitonclick()

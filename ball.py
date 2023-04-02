@@ -1,11 +1,6 @@
 """imported Turtle class from the turtle module"""
 from turtle import Turtle
 
-"""ball's initial moving direction"""
-BALL_DIRECTION = 45
-"""ball's forward distance"""
-BALL_DISTANCE = 40
-
 """created Ball class"""
 class Ball(Turtle):
 
@@ -14,7 +9,13 @@ class Ball(Turtle):
         self.shape("circle")
         self.color("white")
         self.penup()
+        self.xpos = 10
+        self.ypos = 10
 
     def move(self):
-        self.setheading(BALL_DIRECTION)
-        self.forward(BALL_DISTANCE)
+        self.newX = self.xcor() + self.xpos
+        self.newY = self.ycor() + self.ypos
+        self.goto(self.newX, self.newY)
+
+    def bounce(self):
+        self.ypos *= -1
