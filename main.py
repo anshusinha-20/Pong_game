@@ -53,7 +53,11 @@ while isGameOn:
 
     """detecting collision with the walls"""
     if ball.ycor() > 280 or ball.ycor() < -280:
-        ball.bounce()
+        ball.bounceY()
+
+    """detecting collision with the paddles"""
+    if ball.distance(paddleRight) < 50 and ball.xcor() > 320 or ball.distance(paddleLeft) < 50 and ball.xcor() < -320:
+        ball.bounceX()
 
 """screen will exit on click"""
 screen.exitonclick()
